@@ -6,13 +6,13 @@ $(document).ready(function() {
       $('img.first').addClass('active');
       $('img.last').removeClass('active');
       // applico lo stesso meccanismo alle icone
-      $('i.first').addClass('active');
-      $('i.last').removeClass('active');
+      $('.nav > i.first').addClass('active');
+      $('.nav > i.last').removeClass('active');
 
     } else {
       $('img.active').removeClass('active').next().addClass('active')
 
-      $('i.active').removeClass('active').next().addClass('active')
+      $('.nav > i.active').removeClass('active').next().addClass('active')
 
     }
   })
@@ -24,15 +24,26 @@ $(document).ready(function() {
       $('img.first').removeClass('active');
       $('img.last').addClass('active');
       // applico lo stesso meccanismo alle icone
-      $('i.last').addClass('active');
-      $('i.first').removeClass('active');
+      $('.nav > i.last').addClass('active');
+      $('.nav > i.first').removeClass('active');
 
     } else {
       $('img.active').removeClass('active').prev().addClass('active')
-      $('i.active').removeClass('active').prev().addClass('active')
+      $('.nav > i.active').removeClass('active').prev().addClass('active')
 
     }
   })
 
+
+  // creo una funzione per selezionare le immagini direttamente delle icone
+  $('.nav > i').click(function() {
+    $('.nav > i.active').removeClass('active')
+    $(this).addClass('active');
+    // trovo la posizione dell'icona (indice)
+    var i = $('i.active').index();
+    $('img.active').removeClass('active')
+    // uso l'indice per trovare e selezionare l'immagine
+    $('img').eq(i).addClass('active')
+  })
 
 })
