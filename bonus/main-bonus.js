@@ -1,4 +1,17 @@
 $(document).ready(function() {
+
+
+// creo una lista di icone e le uso come indice per le immagini
+  for (var i = 0; i < 4; i++) {
+    $('.nav').append('<i></i>')
+    $('.nav > i').addClass('fas fa-circle')
+    $('.nav > i:first').addClass('first active')
+    $('.nav > i:nth-child(4)').addClass('last')
+  }
+
+
+
+
   // creo una funzione che al click della freccia in avanti scorra le immagini
   $('.next').click(function() {
     // verifico le classi delle immagini con hasclass, se è presente l'ultimo elemento torna al primo
