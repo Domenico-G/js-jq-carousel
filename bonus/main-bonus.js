@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-// creo una lista di icone e le uso come indice per le immagini
+  // creo una lista di icone e le uso come indice per le immagini
   for (var i = 0; i < 4; i++) {
     $('.nav').append('<i></i>')
     $('.nav > i').addClass('fas fa-circle')
@@ -9,12 +9,7 @@ $(document).ready(function() {
     $('.nav > i:nth-child(4)').addClass('last')
   }
 
-
-
-
-  // creo una funzione che al click della freccia in avanti scorra le immagini
-  $('.next').click(function() {
-    // verifico le classi delle immagini con hasclass, se è presente l'ultimo elemento torna al primo
+  function nextImg() {
     if ($("img.active").hasClass("last")) {
       $('img.first').addClass('active');
       $('img.last').removeClass('active');
@@ -28,11 +23,9 @@ $(document).ready(function() {
       $('.nav > i.active').removeClass('active').next().addClass('active')
 
     }
-  })
+  }
 
-  // creo una funzione che al click della freccia in dietro scorra le immagini
-  $('.prev').click(function() {
-    // verifico le classi delle immagini con hasclass, se è presente il primo elemento torna all'ultimo
+  function prevImg() {
     if ($("img.active").hasClass("first")) {
       $('img.first').removeClass('active');
       $('img.last').addClass('active');
@@ -45,7 +38,30 @@ $(document).ready(function() {
       $('.nav > i.active').removeClass('active').prev().addClass('active')
 
     }
+  }
+
+
+
+
+
+  $('.next').click(function() {
+    nextImg()
   })
+
+
+  $('.prev').click(function() {
+    prevImg()
+  })
+
+  $(document).keydown(function(e) {
+    if (e.which === 39) {
+      nextImg();
+    }
+
+    if (e.which === 37) {
+      prevImg();
+    }
+  });
 
 
   // creo una funzione per selezionare le immagini direttamente delle icone
